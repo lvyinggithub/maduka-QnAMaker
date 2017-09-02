@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using maduka_QnAMaker.Models;
 
 namespace maduka_QnAMaker.Forms
 {
@@ -26,7 +27,7 @@ namespace maduka_QnAMaker.Forms
         private void btnCreate_Click(object sender, EventArgs e)
         {
             // 取出資料
-            Models.KBModel.CreateKBModel objKb = new Models.KBModel.CreateKBModel()
+            KBModel.CreateKBModel objKb = new KBModel.CreateKBModel()
             {
                 name = txtKbName.Text,
                 urls = txtQnADocUrl.Text,
@@ -35,16 +36,19 @@ namespace maduka_QnAMaker.Forms
 
             for (int i = 0; i < gvQnA.Rows.Count; i++)
             {
-                string strQuestion = gvQnA.Rows[i].Cells[0].Value.ToString();
-                string strAnswer = gvQnA.Rows[i].Cells[1].Value.ToString();
+                if (gvQnA.Rows[i].Cells[0].Value != null & gvQnA.Rows[i].Cells[1].Value != null)
+                {
+                    string strQuestion = gvQnA.Rows[i].Cells[0].Value.ToString();
+                    string strAnswer = gvQnA.Rows[i].Cells[1].Value.ToString();
 
-                objKb.qnaPairs.Add(
-                    new Models.KBModel.QnAList()
-                    {
-                        answer = strAnswer,
-                        question = strQuestion,
-                    }
-                );
+                    objKb.qnaPairs.Add(
+                        new Models.KBModel.QnAList()
+                        {
+                            answer = strAnswer,
+                            question = strQuestion,
+                        }
+                    );
+                }
             }
 
             // 送出新增的動作
@@ -59,6 +63,36 @@ namespace maduka_QnAMaker.Forms
         private async Task SendRequestAsync(Models.KBModel.CreateKBModel objKb)
         {
             var msg = await CallQnAMaker("/create", "POST", JsonConvert.SerializeObject(objKb));
+
+            if (msg.StatusCode == System.Net.HttpStatusCode.Created)
+            {
+                string strResult = await msg.RequestMessage.Content.ReadAsStringAsync();
+                KBModel.CreateKBResultModel result = JsonConvert.DeserializeObject<KBModel.CreateKBResultModel>(strResult);
+
+                // 寫入KBList的設定檔之
+                base.ReadKBList();
+                base.KBList.Add(
+                    new KBModel.KBListModel()
+                    {
+                        kbId = result.kbId,
+                        name = txtKbName.Text,
+                    }
+                );
+                base.WriteKBList();
+                MessageBox.Show("Create KB Success");
+                this.ResetControls();
+            }
+            else
+            {
+                MessageBox.Show("Create KB Fail:" + msg.StatusCode.ToString());
+            }
+        }
+
+        void ResetControls()
+        {
+            txtKbName.Text = "";
+            txtQnADocUrl.Text = "";
+            gvQnA.DataSource = null;
         }
     }
 }

@@ -7,11 +7,16 @@ using System.Configuration;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Formatting;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace maduka_QnAMaker.Base
 {
     public class BaseForm : System.Windows.Forms.Form
     {
+        /// <summary>
+        /// 訂閱的金鑰字串設定
+        /// </summary>
         public string SubscriptionKey = ConfigurationManager.AppSettings["SubscriptionKey"].ToString();
 
         /// <summary>
@@ -47,6 +52,40 @@ namespace maduka_QnAMaker.Base
             }
 
             return response;
+        }
+
+        /// <summary>
+        /// 設定內容的物件
+        /// </summary>
+        public List<Models.KBModel.KBListModel> KBList { get; set; }
+        /// <summary>
+        /// 設定檔存放的路徑
+        /// </summary>
+        public string ConfigurationFile { get { return ConfigurationManager.AppSettings["ConfigurationFilePath"].ToString(); } }
+
+        /// <summary>
+        /// 讀取設定檔的動作
+        /// </summary>
+        public void ReadKBList()
+        {
+            // 如果檔案不存在就建立空檔
+            if (!File.Exists(this.ConfigurationFile))
+                File.WriteAllText(this.ConfigurationFile, "");
+
+            this.KBList = new List<Models.KBModel.KBListModel>();
+
+            string strConfig = File.ReadAllText(this.ConfigurationFile);
+            if (strConfig != "")
+                this.KBList = JsonConvert.DeserializeObject<List<Models.KBModel.KBListModel>>(strConfig);
+        }
+
+        /// <summary>
+        /// 寫入設定檔的動作
+        /// </summary>
+        public void WriteKBList()
+        {
+            string strConfig = JsonConvert.SerializeObject(this.KBList);
+            File.WriteAllText(this.ConfigurationFile, strConfig);
         }
     }
 }
