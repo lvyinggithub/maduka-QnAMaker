@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using maduka_QnAMaker.Models;
+using System.Net;
 
 namespace maduka_QnAMaker.Forms
 {
@@ -60,14 +61,14 @@ namespace maduka_QnAMaker.Forms
         /// </summary>
         /// <param name="objKb">要建立KB的物件</param>
         /// <returns></returns>
-        private async Task SendRequestAsync(Models.KBModel.CreateKBModel objKb)
+        private void SendRequestAsync(Models.KBModel.CreateKBModel objKb)
         {
-            var msg = await CallQnAMaker("/create", "POST", JsonConvert.SerializeObject(objKb));
+            HttpStatusCode code = HttpStatusCode.OK;
+            string strMsg = CallQnAMaker("/create", "POST", JsonConvert.SerializeObject(objKb), out code);
 
-            if (msg.StatusCode == System.Net.HttpStatusCode.Created)
+            if (code == HttpStatusCode.Created)
             {
-                string strResult = await msg.RequestMessage.Content.ReadAsStringAsync();
-                KBModel.CreateKBResultModel result = JsonConvert.DeserializeObject<KBModel.CreateKBResultModel>(strResult);
+                KBModel.CreateKBResultModel result = JsonConvert.DeserializeObject<KBModel.CreateKBResultModel>(strMsg);
 
                 // 寫入KBList的設定檔之
                 base.ReadKBList();
@@ -84,7 +85,7 @@ namespace maduka_QnAMaker.Forms
             }
             else
             {
-                MessageBox.Show("Create KB Fail:" + msg.StatusCode.ToString());
+                MessageBox.Show("Create KB Fail:" + code.ToString());
             }
         }
 

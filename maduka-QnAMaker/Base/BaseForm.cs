@@ -9,6 +9,7 @@ using System.Net.Http.Headers;
 using System.Net.Http.Formatting;
 using System.IO;
 using Newtonsoft.Json;
+using System.Net;
 
 namespace maduka_QnAMaker.Base
 {
@@ -17,43 +18,55 @@ namespace maduka_QnAMaker.Base
         /// <summary>
         /// 訂閱的金鑰字串設定
         /// </summary>
-        public string SubscriptionKey = ConfigurationManager.AppSettings["SubscriptionKey"].ToString();
-
-        /// <summary>
-        /// 呼叫 QnAMaker API的動作
-        /// </summary>
-        /// <param name="strUrl"></param>
-        /// <param name="strAction"></param>
-        /// <param name="strContent"></param>
-        /// <returns></returns>
-        public async Task<HttpResponseMessage> CallQnAMaker(string strUrl, string strAction, string strContent)
+        public string SubscriptionKey
         {
-            var client = new HttpClient();
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", SubscriptionKey);
-
-            var uri = "https://westus.api.cognitive.microsoft.com/qnamaker/v2.0/knowledgebases" + strUrl;
-
-            HttpResponseMessage response;
-            byte[] byteData = Encoding.UTF8.GetBytes(strContent);
-
-            using (var content = new ByteArrayContent(byteData))
-            {
-                content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-
-                switch (strAction.ToUpper())
-                {
-                    default: response = await client.GetAsync(uri); break;
-                    case "GET": response = await client.GetAsync(uri); break;
-                    case "POST": response = await client.PostAsync(uri, content); break;
-                    case "PATCH": response = await client.PutAsync(uri, content); break;
-                    case "PUT": response = await client.PutAsync(uri, content); break;
-                    case "DELETE": response = await client.DeleteAsync(uri); break;
-                }
-            }
-
-            return response;
+            get { return ConfigurationManager.AppSettings["SubscriptionKey"].ToString(); }
         }
 
+        /// <summary>
+        /// 呼叫API的動作
+        /// </summary>
+        /// <param name="strUrl"></param>
+        /// <param name="strHttpMethod"></param>
+        /// <param name="strPostContent"></param>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        protected string CallQnAMaker(string strUrl, string strHttpMethod, string strPostContent, out HttpStatusCode code)
+        {
+            strUrl = "https://westus.api.cognitive.microsoft.com/qnamaker/v2.0/knowledgebases" + strUrl;
+            code = HttpStatusCode.OK;
+
+            HttpWebRequest request = HttpWebRequest.Create(strUrl) as HttpWebRequest;
+            request.Method = strHttpMethod;
+            request.Headers.Add("Ocp-Apim-Subscription-Key", SubscriptionKey);
+
+            if (strPostContent != "" && strPostContent != string.Empty)
+            {
+                request.KeepAlive = true;
+                request.ContentType = "application/json";
+
+                byte[] bs = Encoding.UTF8.GetBytes(strPostContent);
+                Stream reqStream = request.GetRequestStream();
+                reqStream.Write(bs, 0, bs.Length);
+            }
+
+            string strReturn = "";
+            try
+            {
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                var respStream = response.GetResponseStream();
+                strReturn = new StreamReader(respStream).ReadToEnd();
+                code = response.StatusCode;
+            }
+            catch (Exception e)
+            {
+                strReturn = e.Message;
+                code = HttpStatusCode.NotFound;
+            }
+
+            return strReturn;
+        }
+        
         /// <summary>
         /// 設定內容的物件
         /// </summary>

@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.gvQnA = new System.Windows.Forms.DataGridView();
+            this.question = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.answer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtQnADocUrl = new System.Windows.Forms.TextBox();
             this.txtKbName = new System.Windows.Forms.TextBox();
             this.btnCreate = new System.Windows.Forms.Button();
             this.lblKbName = new System.Windows.Forms.Label();
             this.lblKbQnAList = new System.Windows.Forms.Label();
             this.lblKbQnARefUrl = new System.Windows.Forms.Label();
-            this.question = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.answer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gvQnA)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,6 +54,20 @@
             this.gvQnA.RowTemplate.Height = 38;
             this.gvQnA.Size = new System.Drawing.Size(916, 552);
             this.gvQnA.TabIndex = 1;
+            // 
+            // question
+            // 
+            this.question.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.question.FillWeight = 50F;
+            this.question.HeaderText = "question";
+            this.question.Name = "question";
+            // 
+            // answer
+            // 
+            this.answer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.answer.FillWeight = 50F;
+            this.answer.HeaderText = "answer";
+            this.answer.Name = "answer";
             // 
             // txtQnADocUrl
             // 
@@ -76,9 +90,9 @@
             // btnCreate
             // 
             this.btnCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCreate.Location = new System.Drawing.Point(991, 660);
+            this.btnCreate.Location = new System.Drawing.Point(959, 660);
             this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(75, 36);
+            this.btnCreate.Size = new System.Drawing.Size(107, 36);
             this.btnCreate.TabIndex = 3;
             this.btnCreate.Text = "Create";
             this.btnCreate.UseVisualStyleBackColor = true;
@@ -111,20 +125,6 @@
             this.lblKbQnARefUrl.Size = new System.Drawing.Size(132, 24);
             this.lblKbQnARefUrl.TabIndex = 4;
             this.lblKbQnARefUrl.Text = "QnA Doc Url";
-            // 
-            // question
-            // 
-            this.question.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.question.FillWeight = 50F;
-            this.question.HeaderText = "question";
-            this.question.Name = "question";
-            // 
-            // answer
-            // 
-            this.answer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.answer.FillWeight = 50F;
-            this.answer.HeaderText = "answer";
-            this.answer.Name = "answer";
             // 
             // frmKbCreate
             // 

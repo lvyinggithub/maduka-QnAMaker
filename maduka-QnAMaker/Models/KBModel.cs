@@ -39,6 +39,11 @@ namespace maduka_QnAMaker.Models
             }
         }
 
+        public class QnAQueryList : QnAList
+        {
+            public string source { get; set; }
+        }
+
         public class QnAList
         {
             public string question { get; set; }
