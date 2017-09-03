@@ -48,18 +48,20 @@
             // lblQuestion
             // 
             this.lblQuestion.AutoSize = true;
-            this.lblQuestion.Location = new System.Drawing.Point(109, 53);
+            this.lblQuestion.Location = new System.Drawing.Point(56, 30);
+            this.lblQuestion.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblQuestion.Name = "lblQuestion";
-            this.lblQuestion.Size = new System.Drawing.Size(90, 24);
+            this.lblQuestion.Size = new System.Drawing.Size(46, 12);
             this.lblQuestion.TabIndex = 0;
             this.lblQuestion.Text = "Question";
             // 
             // lblAnswer
             // 
             this.lblAnswer.AutoSize = true;
-            this.lblAnswer.Location = new System.Drawing.Point(119, 193);
+            this.lblAnswer.Location = new System.Drawing.Point(62, 104);
+            this.lblAnswer.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblAnswer.Name = "lblAnswer";
-            this.lblAnswer.Size = new System.Drawing.Size(80, 24);
+            this.lblAnswer.Size = new System.Drawing.Size(40, 12);
             this.lblAnswer.TabIndex = 1;
             this.lblAnswer.Text = "Answer";
             // 
@@ -67,21 +69,23 @@
             // 
             this.txtQuery.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtQuery.Location = new System.Drawing.Point(205, 50);
+            this.txtQuery.Location = new System.Drawing.Point(104, 30);
+            this.txtQuery.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.txtQuery.Multiline = true;
             this.txtQuery.Name = "txtQuery";
-            this.txtQuery.Size = new System.Drawing.Size(1291, 137);
+            this.txtQuery.Size = new System.Drawing.Size(582, 70);
             this.txtQuery.TabIndex = 2;
             // 
             // txtAnswer
             // 
             this.txtAnswer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAnswer.Location = new System.Drawing.Point(205, 193);
+            this.txtAnswer.Location = new System.Drawing.Point(104, 104);
+            this.txtAnswer.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.txtAnswer.Multiline = true;
             this.txtAnswer.Name = "txtAnswer";
             this.txtAnswer.ReadOnly = true;
-            this.txtAnswer.Size = new System.Drawing.Size(1291, 175);
+            this.txtAnswer.Size = new System.Drawing.Size(582, 82);
             this.txtAnswer.TabIndex = 3;
             // 
             // gvAnswerList
@@ -96,11 +100,12 @@
             this.question,
             this.answer,
             this.score});
-            this.gvAnswerList.Location = new System.Drawing.Point(205, 416);
+            this.gvAnswerList.Location = new System.Drawing.Point(104, 216);
+            this.gvAnswerList.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.gvAnswerList.Name = "gvAnswerList";
             this.gvAnswerList.ReadOnly = true;
             this.gvAnswerList.RowTemplate.Height = 38;
-            this.gvAnswerList.Size = new System.Drawing.Size(1291, 374);
+            this.gvAnswerList.Size = new System.Drawing.Size(582, 178);
             this.gvAnswerList.TabIndex = 4;
             // 
             // question
@@ -127,18 +132,20 @@
             // lblOtherAnswer
             // 
             this.lblOtherAnswer.AutoSize = true;
-            this.lblOtherAnswer.Location = new System.Drawing.Point(78, 441);
+            this.lblOtherAnswer.Location = new System.Drawing.Point(42, 216);
+            this.lblOtherAnswer.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblOtherAnswer.Name = "lblOtherAnswer";
-            this.lblOtherAnswer.Size = new System.Drawing.Size(121, 24);
+            this.lblOtherAnswer.Size = new System.Drawing.Size(60, 12);
             this.lblOtherAnswer.TabIndex = 5;
             this.lblOtherAnswer.Text = "Answer List";
             // 
             // btnQuery
             // 
             this.btnQuery.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnQuery.Location = new System.Drawing.Point(1421, 796);
+            this.btnQuery.Location = new System.Drawing.Point(617, 398);
+            this.btnQuery.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.btnQuery.Name = "btnQuery";
-            this.btnQuery.Size = new System.Drawing.Size(75, 33);
+            this.btnQuery.Size = new System.Drawing.Size(69, 23);
             this.btnQuery.TabIndex = 6;
             this.btnQuery.Text = "Query";
             this.btnQuery.UseVisualStyleBackColor = true;
@@ -147,9 +154,10 @@
             // lblKbId
             // 
             this.lblKbId.AutoSize = true;
-            this.lblKbId.Location = new System.Drawing.Point(12, 15);
+            this.lblKbId.Location = new System.Drawing.Point(6, 9);
+            this.lblKbId.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblKbId.Name = "lblKbId";
-            this.lblKbId.Size = new System.Drawing.Size(187, 24);
+            this.lblKbId.Size = new System.Drawing.Size(96, 12);
             this.lblKbId.TabIndex = 7;
             this.lblKbId.Text = "Knowledge Base Id";
             // 
@@ -160,33 +168,36 @@
             this.cbxKbId.DisplayMember = "name";
             this.cbxKbId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxKbId.FormattingEnabled = true;
-            this.cbxKbId.Location = new System.Drawing.Point(205, 12);
+            this.cbxKbId.Location = new System.Drawing.Point(104, 6);
+            this.cbxKbId.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.cbxKbId.Name = "cbxKbId";
-            this.cbxKbId.Size = new System.Drawing.Size(1291, 32);
+            this.cbxKbId.Size = new System.Drawing.Size(582, 20);
             this.cbxKbId.TabIndex = 8;
             // 
             // txtTop
             // 
-            this.txtTop.Location = new System.Drawing.Point(205, 374);
+            this.txtTop.Location = new System.Drawing.Point(104, 190);
+            this.txtTop.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.txtTop.Name = "txtTop";
-            this.txtTop.Size = new System.Drawing.Size(100, 36);
+            this.txtTop.Size = new System.Drawing.Size(48, 22);
             this.txtTop.TabIndex = 9;
             this.txtTop.Text = "3";
             // 
             // lblTopCount
             // 
             this.lblTopCount.AutoSize = true;
-            this.lblTopCount.Location = new System.Drawing.Point(161, 374);
+            this.lblTopCount.Location = new System.Drawing.Point(82, 193);
+            this.lblTopCount.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblTopCount.Name = "lblTopCount";
-            this.lblTopCount.Size = new System.Drawing.Size(38, 24);
+            this.lblTopCount.Size = new System.Drawing.Size(20, 12);
             this.lblTopCount.TabIndex = 10;
             this.lblTopCount.Text = "top";
             // 
             // frmQnA
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1508, 955);
+            this.ClientSize = new System.Drawing.Size(696, 432);
             this.Controls.Add(this.lblTopCount);
             this.Controls.Add(this.txtTop);
             this.Controls.Add(this.cbxKbId);
@@ -198,6 +209,7 @@
             this.Controls.Add(this.txtQuery);
             this.Controls.Add(this.lblAnswer);
             this.Controls.Add(this.lblQuestion);
+            this.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.Name = "frmQnA";
             this.Text = "開始問答";
             this.Load += new System.EventHandler(this.frmQnA_Load);

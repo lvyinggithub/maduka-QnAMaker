@@ -52,18 +52,20 @@
             // lblKBId
             // 
             this.lblKBId.AutoSize = true;
-            this.lblKBId.Location = new System.Drawing.Point(12, 15);
+            this.lblKBId.Location = new System.Drawing.Point(6, 8);
+            this.lblKBId.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblKBId.Name = "lblKBId";
-            this.lblKBId.Size = new System.Drawing.Size(187, 24);
+            this.lblKBId.Size = new System.Drawing.Size(96, 12);
             this.lblKBId.TabIndex = 1;
             this.lblKBId.Text = "Knowledge Base Id";
             // 
             // lblQnAList
             // 
             this.lblQnAList.AutoSize = true;
-            this.lblQnAList.Location = new System.Drawing.Point(105, 336);
+            this.lblQnAList.Location = new System.Drawing.Point(55, 168);
+            this.lblQnAList.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblQnAList.Name = "lblQnAList";
-            this.lblQnAList.Size = new System.Drawing.Size(94, 24);
+            this.lblQnAList.Size = new System.Drawing.Size(47, 12);
             this.lblQnAList.TabIndex = 1;
             this.lblQnAList.Text = "QnA List";
             // 
@@ -74,9 +76,10 @@
             this.cbxKbId.DisplayMember = "name";
             this.cbxKbId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxKbId.FormattingEnabled = true;
-            this.cbxKbId.Location = new System.Drawing.Point(205, 12);
+            this.cbxKbId.Location = new System.Drawing.Point(104, 6);
+            this.cbxKbId.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.cbxKbId.Name = "cbxKbId";
-            this.cbxKbId.Size = new System.Drawing.Size(1138, 32);
+            this.cbxKbId.Size = new System.Drawing.Size(554, 20);
             this.cbxKbId.TabIndex = 5;
             this.cbxKbId.SelectedIndexChanged += new System.EventHandler(this.cbxKbId_SelectedIndexChanged);
             // 
@@ -90,10 +93,11 @@
             this.Source,
             this.question,
             this.answer});
-            this.gvQnA.Location = new System.Drawing.Point(205, 336);
+            this.gvQnA.Location = new System.Drawing.Point(104, 168);
+            this.gvQnA.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.gvQnA.Name = "gvQnA";
             this.gvQnA.RowTemplate.Height = 38;
-            this.gvQnA.Size = new System.Drawing.Size(1138, 354);
+            this.gvQnA.Size = new System.Drawing.Size(554, 222);
             this.gvQnA.TabIndex = 6;
             this.gvQnA.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvQnA_CellClick);
             this.gvQnA.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.gvQnA_DataBindingComplete);
@@ -123,9 +127,10 @@
             // btnUpdate
             // 
             this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUpdate.Location = new System.Drawing.Point(976, 696);
+            this.btnUpdate.Location = new System.Drawing.Point(490, 394);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(125, 36);
+            this.btnUpdate.Size = new System.Drawing.Size(58, 23);
             this.btnUpdate.TabIndex = 7;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
@@ -134,9 +139,10 @@
             // btnDownload
             // 
             this.btnDownload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDownload.Location = new System.Drawing.Point(845, 696);
+            this.btnDownload.Location = new System.Drawing.Point(430, 394);
+            this.btnDownload.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.btnDownload.Name = "btnDownload";
-            this.btnDownload.Size = new System.Drawing.Size(125, 36);
+            this.btnDownload.Size = new System.Drawing.Size(58, 23);
             this.btnDownload.TabIndex = 8;
             this.btnDownload.Text = "Download";
             this.btnDownload.UseVisualStyleBackColor = true;
@@ -145,9 +151,10 @@
             // btnTrain
             // 
             this.btnTrain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTrain.Location = new System.Drawing.Point(1107, 696);
+            this.btnTrain.Location = new System.Drawing.Point(550, 394);
+            this.btnTrain.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.btnTrain.Name = "btnTrain";
-            this.btnTrain.Size = new System.Drawing.Size(115, 36);
+            this.btnTrain.Size = new System.Drawing.Size(53, 23);
             this.btnTrain.TabIndex = 9;
             this.btnTrain.Text = "Train";
             this.btnTrain.UseVisualStyleBackColor = true;
@@ -156,9 +163,10 @@
             // btnAddQnA
             // 
             this.btnAddQnA.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddQnA.Location = new System.Drawing.Point(1158, 294);
+            this.btnAddQnA.Location = new System.Drawing.Point(573, 141);
+            this.btnAddQnA.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.btnAddQnA.Name = "btnAddQnA";
-            this.btnAddQnA.Size = new System.Drawing.Size(185, 36);
+            this.btnAddQnA.Size = new System.Drawing.Size(85, 23);
             this.btnAddQnA.TabIndex = 10;
             this.btnAddQnA.Text = "Add or Save";
             this.btnAddQnA.UseVisualStyleBackColor = true;
@@ -167,9 +175,10 @@
             // btnDeleteQnA
             // 
             this.btnDeleteQnA.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnDeleteQnA.Location = new System.Drawing.Point(205, 696);
+            this.btnDeleteQnA.Location = new System.Drawing.Point(104, 394);
+            this.btnDeleteQnA.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.btnDeleteQnA.Name = "btnDeleteQnA";
-            this.btnDeleteQnA.Size = new System.Drawing.Size(125, 36);
+            this.btnDeleteQnA.Size = new System.Drawing.Size(58, 23);
             this.btnDeleteQnA.TabIndex = 11;
             this.btnDeleteQnA.Text = "Delete Row";
             this.btnDeleteQnA.UseVisualStyleBackColor = true;
@@ -178,9 +187,10 @@
             // btnUndelete
             // 
             this.btnUndelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnUndelete.Location = new System.Drawing.Point(336, 696);
+            this.btnUndelete.Location = new System.Drawing.Point(164, 394);
+            this.btnUndelete.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.btnUndelete.Name = "btnUndelete";
-            this.btnUndelete.Size = new System.Drawing.Size(171, 36);
+            this.btnUndelete.Size = new System.Drawing.Size(79, 23);
             this.btnUndelete.TabIndex = 12;
             this.btnUndelete.Text = "Undelete Row";
             this.btnUndelete.UseVisualStyleBackColor = true;
@@ -189,26 +199,29 @@
             // lblQuestion
             // 
             this.lblQuestion.AutoSize = true;
-            this.lblQuestion.Location = new System.Drawing.Point(105, 50);
+            this.lblQuestion.Location = new System.Drawing.Point(56, 30);
+            this.lblQuestion.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblQuestion.Name = "lblQuestion";
-            this.lblQuestion.Size = new System.Drawing.Size(90, 24);
+            this.lblQuestion.Size = new System.Drawing.Size(46, 12);
             this.lblQuestion.TabIndex = 1;
             this.lblQuestion.Text = "Question";
             // 
             // txtQuestion
             // 
-            this.txtQuestion.Location = new System.Drawing.Point(205, 50);
+            this.txtQuestion.Location = new System.Drawing.Point(104, 30);
+            this.txtQuestion.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.txtQuestion.Multiline = true;
             this.txtQuestion.Name = "txtQuestion";
-            this.txtQuestion.Size = new System.Drawing.Size(415, 280);
+            this.txtQuestion.Size = new System.Drawing.Size(194, 134);
             this.txtQuestion.TabIndex = 13;
             // 
             // lblAnswer
             // 
             this.lblAnswer.AutoSize = true;
-            this.lblAnswer.Location = new System.Drawing.Point(626, 47);
+            this.lblAnswer.Location = new System.Drawing.Point(300, 30);
+            this.lblAnswer.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblAnswer.Name = "lblAnswer";
-            this.lblAnswer.Size = new System.Drawing.Size(80, 24);
+            this.lblAnswer.Size = new System.Drawing.Size(40, 12);
             this.lblAnswer.TabIndex = 14;
             this.lblAnswer.Text = "Answer";
             // 
@@ -216,18 +229,20 @@
             // 
             this.txtAnswer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAnswer.Location = new System.Drawing.Point(712, 50);
+            this.txtAnswer.Location = new System.Drawing.Point(342, 30);
+            this.txtAnswer.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.txtAnswer.Multiline = true;
             this.txtAnswer.Name = "txtAnswer";
-            this.txtAnswer.Size = new System.Drawing.Size(430, 280);
+            this.txtAnswer.Size = new System.Drawing.Size(229, 134);
             this.txtAnswer.TabIndex = 13;
             // 
             // btnPublish
             // 
             this.btnPublish.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPublish.Location = new System.Drawing.Point(1228, 696);
+            this.btnPublish.Location = new System.Drawing.Point(605, 394);
+            this.btnPublish.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.btnPublish.Name = "btnPublish";
-            this.btnPublish.Size = new System.Drawing.Size(115, 36);
+            this.btnPublish.Size = new System.Drawing.Size(53, 23);
             this.btnPublish.TabIndex = 9;
             this.btnPublish.Text = "Publish";
             this.btnPublish.UseVisualStyleBackColor = true;
@@ -235,9 +250,9 @@
             // 
             // frmKbMng
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1355, 744);
+            this.ClientSize = new System.Drawing.Size(668, 423);
             this.Controls.Add(this.lblAnswer);
             this.Controls.Add(this.txtAnswer);
             this.Controls.Add(this.txtQuestion);
@@ -253,8 +268,9 @@
             this.Controls.Add(this.lblQuestion);
             this.Controls.Add(this.lblQnAList);
             this.Controls.Add(this.lblKBId);
+            this.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.Name = "frmKbMng";
-            this.Text = "KB資料管理";
+            this.Text = "KB QnA管理";
             this.Load += new System.EventHandler(this.frmKbMng_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvQnA)).EndInit();
             this.ResumeLayout(false);

@@ -49,10 +49,11 @@
             this.gvQnA.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.question,
             this.answer});
-            this.gvQnA.Location = new System.Drawing.Point(150, 54);
+            this.gvQnA.Location = new System.Drawing.Point(75, 32);
+            this.gvQnA.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.gvQnA.Name = "gvQnA";
             this.gvQnA.RowTemplate.Height = 38;
-            this.gvQnA.Size = new System.Drawing.Size(916, 552);
+            this.gvQnA.Size = new System.Drawing.Size(413, 258);
             this.gvQnA.TabIndex = 1;
             // 
             // question
@@ -73,26 +74,29 @@
             // 
             this.txtQnADocUrl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtQnADocUrl.Location = new System.Drawing.Point(150, 612);
+            this.txtQnADocUrl.Location = new System.Drawing.Point(75, 294);
+            this.txtQnADocUrl.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.txtQnADocUrl.Name = "txtQnADocUrl";
-            this.txtQnADocUrl.Size = new System.Drawing.Size(916, 36);
+            this.txtQnADocUrl.Size = new System.Drawing.Size(413, 22);
             this.txtQnADocUrl.TabIndex = 2;
             // 
             // txtKbName
             // 
             this.txtKbName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtKbName.Location = new System.Drawing.Point(150, 12);
+            this.txtKbName.Location = new System.Drawing.Point(75, 6);
+            this.txtKbName.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.txtKbName.Name = "txtKbName";
-            this.txtKbName.Size = new System.Drawing.Size(916, 36);
+            this.txtKbName.Size = new System.Drawing.Size(413, 22);
             this.txtKbName.TabIndex = 0;
             // 
             // btnCreate
             // 
             this.btnCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCreate.Location = new System.Drawing.Point(959, 660);
+            this.btnCreate.Location = new System.Drawing.Point(427, 320);
+            this.btnCreate.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(107, 36);
+            this.btnCreate.Size = new System.Drawing.Size(61, 23);
             this.btnCreate.TabIndex = 3;
             this.btnCreate.Text = "Create";
             this.btnCreate.UseVisualStyleBackColor = true;
@@ -101,18 +105,20 @@
             // lblKbName
             // 
             this.lblKbName.AutoSize = true;
-            this.lblKbName.Location = new System.Drawing.Point(43, 15);
+            this.lblKbName.Location = new System.Drawing.Point(20, 9);
+            this.lblKbName.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblKbName.Name = "lblKbName";
-            this.lblKbName.Size = new System.Drawing.Size(101, 24);
+            this.lblKbName.Size = new System.Drawing.Size(51, 12);
             this.lblKbName.TabIndex = 4;
             this.lblKbName.Text = "KB Name";
             // 
             // lblKbQnAList
             // 
             this.lblKbQnAList.AutoSize = true;
-            this.lblKbQnAList.Location = new System.Drawing.Point(50, 54);
+            this.lblKbQnAList.Location = new System.Drawing.Point(24, 32);
+            this.lblKbQnAList.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblKbQnAList.Name = "lblKbQnAList";
-            this.lblKbQnAList.Size = new System.Drawing.Size(94, 24);
+            this.lblKbQnAList.Size = new System.Drawing.Size(47, 12);
             this.lblKbQnAList.TabIndex = 4;
             this.lblKbQnAList.Text = "QnA List";
             // 
@@ -120,17 +126,18 @@
             // 
             this.lblKbQnARefUrl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblKbQnARefUrl.AutoSize = true;
-            this.lblKbQnARefUrl.Location = new System.Drawing.Point(12, 615);
+            this.lblKbQnARefUrl.Location = new System.Drawing.Point(6, 297);
+            this.lblKbQnARefUrl.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblKbQnARefUrl.Name = "lblKbQnARefUrl";
-            this.lblKbQnARefUrl.Size = new System.Drawing.Size(132, 24);
+            this.lblKbQnARefUrl.Size = new System.Drawing.Size(67, 12);
             this.lblKbQnARefUrl.TabIndex = 4;
             this.lblKbQnARefUrl.Text = "QnA Doc Url";
             // 
             // frmKbCreate
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1078, 708);
+            this.ClientSize = new System.Drawing.Size(498, 354);
             this.Controls.Add(this.lblKbQnARefUrl);
             this.Controls.Add(this.lblKbQnAList);
             this.Controls.Add(this.lblKbName);
@@ -138,8 +145,9 @@
             this.Controls.Add(this.txtKbName);
             this.Controls.Add(this.txtQnADocUrl);
             this.Controls.Add(this.gvQnA);
+            this.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.Name = "frmKbCreate";
-            this.Text = "frmKbCreate";
+            this.Text = "建立新KB";
             ((System.ComponentModel.ISupportInitialize)(this.gvQnA)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
