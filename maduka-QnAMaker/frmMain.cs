@@ -48,5 +48,13 @@ namespace maduka_QnAMaker
         private void mnKbQnA_Click(object sender, EventArgs e) => this.OpenForm(new Forms.frmKbMng());
 
         private void mnClose_Click(object sender, EventArgs e) => this.Close();
+
+        /// <summary>
+        /// 開始問答的畫面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void mnQnA_Click(object sender, EventArgs e) => this.OpenForm(new Forms.frmQnA());
+
     }
 }

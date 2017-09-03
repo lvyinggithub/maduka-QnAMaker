@@ -206,6 +206,23 @@ namespace maduka_QnAMaker.Forms
                 MessageBox.Show("Train KB Fail:" + code.ToString());
         }
 
+
+        /// <summary>
+        /// Publish的動作
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnPublish_Click(object sender, EventArgs e)
+        {
+            HttpStatusCode code = HttpStatusCode.OK;
+            iQnAMaker.PublishKB(base.KBList[cbxKbId.SelectedIndex].kbId, out code);
+
+            if (code == HttpStatusCode.NoContent)
+                MessageBox.Show("Publish KB Success");
+            else
+                MessageBox.Show("Publish KB Fail:" + code.ToString());
+        }
+
         /// <summary>
         /// 在Gridview中點選欄位時，放入當下的資料列索引
         /// </summary>

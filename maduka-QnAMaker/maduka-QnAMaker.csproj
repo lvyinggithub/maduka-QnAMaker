@@ -82,6 +82,12 @@
     <Compile Include="Forms\frmKbMng.Designer.cs">
       <DependentUpon>frmKbMng.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmQnA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmQnA.Designer.cs">
+      <DependentUpon>frmQnA.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmKbMng.resx">
       <DependentUpon>frmKbMng.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmQnA.resx">
+      <DependentUpon>frmQnA.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>

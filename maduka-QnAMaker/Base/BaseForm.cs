@@ -20,7 +20,7 @@ namespace maduka_QnAMaker.Base
         /// <summary>
         /// 存取QnAMaker的介面物件，於頁面讀取時進行初使化
         /// </summary>
-        public iQnAMaker iQnAMaker;
+        public iQnAMaker iQnAMaker { get; set; }
 
         /// <summary>
         /// 訂閱的金鑰字串設定
@@ -45,7 +45,7 @@ namespace maduka_QnAMaker.Base
         /// </summary>
         public BaseForm()
         {
-            iQnAMaker = new maduka_QnAMakerLibrary.API.QnAMaker()
+            this.iQnAMaker = new maduka_QnAMakerLibrary.API.QnAMaker()
             {
                 SubscriptionKey = this.SubscriptionKey
             };

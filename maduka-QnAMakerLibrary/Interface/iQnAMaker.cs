@@ -15,5 +15,9 @@ namespace maduka_QnAMakerLibrary.Interface
         string UpdateKB(string strKbId, KBModel.UpdateKBModel value, out HttpStatusCode code);
 
         string TrainKB(string strKbId, out HttpStatusCode code);
+
+        KBModel.GenerateAnswerResultModel GenerateAnswer(string strKbId, KBModel.GenerateAnswerModel value, out HttpStatusCode code);
+
+        string PublishKB(string strKbId, out HttpStatusCode code);
     }
 }

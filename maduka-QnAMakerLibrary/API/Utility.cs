@@ -22,17 +22,17 @@ namespace maduka_QnAMakerLibrary.API
         {
             strUrl = "https://westus.api.cognitive.microsoft.com/qnamaker/v2.0/knowledgebases" + strUrl;
             code = HttpStatusCode.OK;
+            byte[] bs = Encoding.UTF8.GetBytes(strPostContent);
 
             HttpWebRequest request = HttpWebRequest.Create(strUrl) as HttpWebRequest;
             request.Method = strHttpMethod;
             request.Headers.Add("Ocp-Apim-Subscription-Key", strSubscriptionKey);
+            request.ContentType = "application/json";
+            request.ContentLength = bs.Length;
+            request.KeepAlive = true;
 
-            if (strPostContent != "" && strPostContent != string.Empty)
+            if (!string.IsNullOrEmpty(strPostContent))
             {
-                request.KeepAlive = true;
-                request.ContentType = "application/json";
-
-                byte[] bs = Encoding.UTF8.GetBytes(strPostContent);
                 Stream reqStream = request.GetRequestStream();
                 reqStream.Write(bs, 0, bs.Length);
             }
@@ -48,7 +48,7 @@ namespace maduka_QnAMakerLibrary.API
             catch (Exception e)
             {
                 strReturn = e.Message;
-                code = HttpStatusCode.NotFound;
+                code = HttpStatusCode.BadRequest;
             }
 
             return strReturn;

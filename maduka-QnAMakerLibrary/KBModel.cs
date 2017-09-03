@@ -74,6 +74,29 @@ namespace maduka_QnAMakerLibrary
             }
         }
 
+        /// <summary>
+        /// 詢問問題的模型
+        /// </summary>
+        public class GenerateAnswerModel
+        {
+            public string question { get; set; }
+            public int top { get; set; }
+        }
+
+        /// <summary>
+        /// 回覆解答的模型物件
+        /// </summary>
+        public class GenerateAnswerResultModel
+        {
+            public List<Answer> answers { get; set; }
+            public class Answer
+            {
+                public string answer { get; set; }
+                public List<string> questions { get; set; }
+                public float score { get; set; }
+            }
+        }
+
         public class QnAQueryList : QnAList
         {
             public string source { get; set; }

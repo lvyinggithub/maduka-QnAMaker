@@ -35,7 +35,7 @@
             this.mnKbQnA = new System.Windows.Forms.ToolStripMenuItem();
             this.mnAlterationsMngItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnClose = new System.Windows.Forms.ToolStripMenuItem();
-            this.進行訓練ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnQnA = new System.Windows.Forms.ToolStripMenuItem();
             this.mnMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,10 +44,10 @@
             this.mnMain.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.mnMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.管理KBToolStripMenuItem,
-            this.進行訓練ToolStripMenuItem});
+            this.mnQnA});
             this.mnMain.Location = new System.Drawing.Point(0, 0);
             this.mnMain.Name = "mnMain";
-            this.mnMain.Size = new System.Drawing.Size(1369, 42);
+            this.mnMain.Size = new System.Drawing.Size(1369, 38);
             this.mnMain.TabIndex = 4;
             this.mnMain.Text = "menuStrip1";
             // 
@@ -58,7 +58,7 @@
             this.mnAlterationsMngItem,
             this.mnClose});
             this.管理KBToolStripMenuItem.Name = "管理KBToolStripMenuItem";
-            this.管理KBToolStripMenuItem.Size = new System.Drawing.Size(103, 38);
+            this.管理KBToolStripMenuItem.Size = new System.Drawing.Size(103, 34);
             this.管理KBToolStripMenuItem.Text = "管理KB";
             // 
             // mnKBMng
@@ -73,14 +73,14 @@
             // mnKbCreate
             // 
             this.mnKbCreate.Name = "mnKbCreate";
-            this.mnKbCreate.Size = new System.Drawing.Size(268, 38);
+            this.mnKbCreate.Size = new System.Drawing.Size(246, 38);
             this.mnKbCreate.Text = "建立新KB";
             this.mnKbCreate.Click += new System.EventHandler(this.mnKbCreate_Click);
             // 
             // mnKbQnA
             // 
             this.mnKbQnA.Name = "mnKbQnA";
-            this.mnKbQnA.Size = new System.Drawing.Size(268, 38);
+            this.mnKbQnA.Size = new System.Drawing.Size(246, 38);
             this.mnKbQnA.Text = "KB QnA管理";
             this.mnKbQnA.Click += new System.EventHandler(this.mnKbQnA_Click);
             // 
@@ -98,11 +98,12 @@
             this.mnClose.Text = "關閉";
             this.mnClose.Click += new System.EventHandler(this.mnClose_Click);
             // 
-            // 進行訓練ToolStripMenuItem
+            // mnQnA
             // 
-            this.進行訓練ToolStripMenuItem.Name = "進行訓練ToolStripMenuItem";
-            this.進行訓練ToolStripMenuItem.Size = new System.Drawing.Size(121, 38);
-            this.進行訓練ToolStripMenuItem.Text = "進行訓練";
+            this.mnQnA.Name = "mnQnA";
+            this.mnQnA.Size = new System.Drawing.Size(121, 34);
+            this.mnQnA.Text = "開始問答";
+            this.mnQnA.Click += new System.EventHandler(this.mnQnA_Click);
             // 
             // frmMain
             // 
@@ -113,7 +114,7 @@
             this.IsMdiContainer = true;
             this.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.Name = "frmMain";
-            this.Text = "frmMain";
+            this.Text = "Microsoft QnAMaker";
             this.mnMain.ResumeLayout(false);
             this.mnMain.PerformLayout();
             this.ResumeLayout(false);
@@ -126,7 +127,7 @@
         private System.Windows.Forms.ToolStripMenuItem 管理KBToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnKBMng;
         private System.Windows.Forms.ToolStripMenuItem mnAlterationsMngItem;
-        private System.Windows.Forms.ToolStripMenuItem 進行訓練ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnQnA;
         private System.Windows.Forms.ToolStripMenuItem mnClose;
         private System.Windows.Forms.ToolStripMenuItem mnKbCreate;
         private System.Windows.Forms.ToolStripMenuItem mnKbQnA;

@@ -53,6 +53,12 @@ namespace maduka_QnAMakerLibrary.API
             return Utility.CallQnAMaker("/" + strKbId, "PATCH", JsonConvert.SerializeObject(value), this.SubscriptionKey, out code);
         }
 
+        /// <summary>
+        /// 進行KB訓練的動作
+        /// </summary>
+        /// <param name="strKbId"></param>
+        /// <param name="code"></param>
+        /// <returns></returns>
         public string TrainKB(string strKbId, out HttpStatusCode code)
         {
             KBModel.TrainKBModel objModel = new KBModel.TrainKBModel()
@@ -71,6 +77,35 @@ namespace maduka_QnAMakerLibrary.API
 
             string strUrl = $"/{strKbId}/train";
             return Utility.CallQnAMaker(strUrl, "PATCH", JsonConvert.SerializeObject(objModel), this.SubscriptionKey, out code);
+        }
+
+        /// <summary>
+        /// 詢問問題的動作
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public KBModel.GenerateAnswerResultModel GenerateAnswer(string strKbId, KBModel.GenerateAnswerModel value, out HttpStatusCode code)
+        {
+            KBModel.GenerateAnswerResultModel result = null;
+            string strUrl = $"/{strKbId}/generateAnswer";
+            string strResult = Utility.CallQnAMaker(strUrl, "POST", JsonConvert.SerializeObject(value), this.SubscriptionKey, out code);
+
+            if (code == HttpStatusCode.OK)
+                result = JsonConvert.DeserializeObject<KBModel.GenerateAnswerResultModel>(strResult);
+
+            return result;
+        }
+
+        /// <summary>
+        /// Publish KB的動作
+        /// </summary>
+        /// <param name="strKbId"></param>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public string PublishKB(string strKbId, out HttpStatusCode code)
+        {
+            return Utility.CallQnAMaker("/" + strKbId, "PUT", "", this.SubscriptionKey, out code);
         }
     }
 }

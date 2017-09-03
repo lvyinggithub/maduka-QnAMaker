@@ -32,19 +32,20 @@
             this.lblQnAList = new System.Windows.Forms.Label();
             this.cbxKbId = new System.Windows.Forms.ComboBox();
             this.gvQnA = new System.Windows.Forms.DataGridView();
+            this.Source = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.question = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.answer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDownload = new System.Windows.Forms.Button();
             this.btnTrain = new System.Windows.Forms.Button();
             this.btnAddQnA = new System.Windows.Forms.Button();
             this.btnDeleteQnA = new System.Windows.Forms.Button();
-            this.Source = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.question = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.answer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnUndelete = new System.Windows.Forms.Button();
             this.lblQuestion = new System.Windows.Forms.Label();
             this.txtQuestion = new System.Windows.Forms.TextBox();
             this.lblAnswer = new System.Windows.Forms.Label();
             this.txtAnswer = new System.Windows.Forms.TextBox();
+            this.btnPublish = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gvQnA)).BeginInit();
             this.SuspendLayout();
             // 
@@ -97,10 +98,32 @@
             this.gvQnA.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvQnA_CellClick);
             this.gvQnA.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.gvQnA_DataBindingComplete);
             // 
+            // Source
+            // 
+            this.Source.DataPropertyName = "source";
+            this.Source.HeaderText = "Source";
+            this.Source.Name = "Source";
+            // 
+            // question
+            // 
+            this.question.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.question.DataPropertyName = "question";
+            this.question.FillWeight = 50F;
+            this.question.HeaderText = "question";
+            this.question.Name = "question";
+            // 
+            // answer
+            // 
+            this.answer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.answer.DataPropertyName = "answer";
+            this.answer.FillWeight = 50F;
+            this.answer.HeaderText = "answer";
+            this.answer.Name = "answer";
+            // 
             // btnUpdate
             // 
             this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUpdate.Location = new System.Drawing.Point(1097, 696);
+            this.btnUpdate.Location = new System.Drawing.Point(976, 696);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(125, 36);
             this.btnUpdate.TabIndex = 7;
@@ -111,7 +134,7 @@
             // btnDownload
             // 
             this.btnDownload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDownload.Location = new System.Drawing.Point(966, 696);
+            this.btnDownload.Location = new System.Drawing.Point(845, 696);
             this.btnDownload.Name = "btnDownload";
             this.btnDownload.Size = new System.Drawing.Size(125, 36);
             this.btnDownload.TabIndex = 8;
@@ -122,7 +145,7 @@
             // btnTrain
             // 
             this.btnTrain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTrain.Location = new System.Drawing.Point(1228, 696);
+            this.btnTrain.Location = new System.Drawing.Point(1107, 696);
             this.btnTrain.Name = "btnTrain";
             this.btnTrain.Size = new System.Drawing.Size(115, 36);
             this.btnTrain.TabIndex = 9;
@@ -151,28 +174,6 @@
             this.btnDeleteQnA.Text = "Delete Row";
             this.btnDeleteQnA.UseVisualStyleBackColor = true;
             this.btnDeleteQnA.Click += new System.EventHandler(this.btnDeleteQnA_Click);
-            // 
-            // Source
-            // 
-            this.Source.DataPropertyName = "source";
-            this.Source.HeaderText = "Source";
-            this.Source.Name = "Source";
-            // 
-            // question
-            // 
-            this.question.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.question.DataPropertyName = "question";
-            this.question.FillWeight = 50F;
-            this.question.HeaderText = "question";
-            this.question.Name = "question";
-            // 
-            // answer
-            // 
-            this.answer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.answer.DataPropertyName = "answer";
-            this.answer.FillWeight = 50F;
-            this.answer.HeaderText = "answer";
-            this.answer.Name = "answer";
             // 
             // btnUndelete
             // 
@@ -221,6 +222,17 @@
             this.txtAnswer.Size = new System.Drawing.Size(430, 280);
             this.txtAnswer.TabIndex = 13;
             // 
+            // btnPublish
+            // 
+            this.btnPublish.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPublish.Location = new System.Drawing.Point(1228, 696);
+            this.btnPublish.Name = "btnPublish";
+            this.btnPublish.Size = new System.Drawing.Size(115, 36);
+            this.btnPublish.TabIndex = 9;
+            this.btnPublish.Text = "Publish";
+            this.btnPublish.UseVisualStyleBackColor = true;
+            this.btnPublish.Click += new System.EventHandler(this.btnPublish_Click);
+            // 
             // frmKbMng
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
@@ -232,6 +244,7 @@
             this.Controls.Add(this.btnUndelete);
             this.Controls.Add(this.btnDeleteQnA);
             this.Controls.Add(this.btnAddQnA);
+            this.Controls.Add(this.btnPublish);
             this.Controls.Add(this.btnTrain);
             this.Controls.Add(this.btnDownload);
             this.Controls.Add(this.btnUpdate);
@@ -267,5 +280,6 @@
         private System.Windows.Forms.TextBox txtQuestion;
         private System.Windows.Forms.Label lblAnswer;
         private System.Windows.Forms.TextBox txtAnswer;
+        private System.Windows.Forms.Button btnPublish;
     }
 }
