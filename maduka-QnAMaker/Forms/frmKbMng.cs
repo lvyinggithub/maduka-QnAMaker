@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
 using System.IO;
-using maduka_QnAMaker.Models;
+using maduka_QnAMakerLibrary;
 
 namespace maduka_QnAMaker.Forms
 {
@@ -17,6 +17,7 @@ namespace maduka_QnAMaker.Forms
     {
         List<KBModel.QnAQueryList> objQnA = new List<KBModel.QnAQueryList>();
         int intRowIndex = 0;
+        bool blIsEditor = false;
 
         public frmKbMng()
         {
@@ -54,16 +55,28 @@ namespace maduka_QnAMaker.Forms
         /// <param name="e"></param>
         private void btnAddQnA_Click(object sender, EventArgs e)
         {
-            objQnA.Add(
-                new KBModel.QnAQueryList()
-                {
-                    answer = "-",
-                    question = "-",
-                    source = "add",
-                }
-            );
-            gvQnA.DataSource = null;
-            gvQnA.Update();
+            if (blIsEditor)
+            {
+                objQnA[intRowIndex].answer = txtAnswer.Text;
+                objQnA[intRowIndex].question = txtQuestion.Text;
+            }
+            else
+            {
+                objQnA.Add(
+                    new KBModel.QnAQueryList()
+                    {
+                        answer = txtAnswer.Text,
+                        question = txtQuestion.Text,
+                        source = "add",
+                    }
+                );
+            }
+
+            blIsEditor = false;
+            txtAnswer.Text = "";
+            txtQuestion.Text = "";
+
+            gvQnA.DataSource = new KBModel.QnAQueryList();
             gvQnA.Refresh();
             gvQnA.DataSource = objQnA;
         }
@@ -77,12 +90,38 @@ namespace maduka_QnAMaker.Forms
         {
             if (intRowIndex > -1)
             {
-                objQnA[intRowIndex].source = "delete";
-                gvQnA.DataSource = objQnA;
+                if (objQnA[intRowIndex].source == "add")
+                {
+                    objQnA.RemoveAt(intRowIndex);
+                }
+                else
+                {
+                    objQnA[intRowIndex].source = "delete";
+                }
+
+                gvQnA.DataSource = new KBModel.QnAQueryList();
                 gvQnA.Refresh();
+                gvQnA.DataSource = objQnA;
             }
         }
 
+        /// <summary>
+        /// 取消刪除的動作
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnUndelete_Click(object sender, EventArgs e)
+        {
+            if (intRowIndex > -1)
+            {
+                if (objQnA[intRowIndex].source == "delete")
+                    objQnA[intRowIndex].source = "Editorial";
+
+                gvQnA.DataSource = new KBModel.QnAQueryList();
+                gvQnA.Refresh();
+                gvQnA.DataSource = objQnA;
+            }
+        }
         /// <summary>
         /// 下載tsv檔案至Download資料夾中
         /// </summary>
@@ -94,14 +133,77 @@ namespace maduka_QnAMaker.Forms
             MessageBox.Show("File is save to :" + strFilePath);
         }
 
+        /// <summary>
+        /// 送出更新的動作
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            KBModel.UpdateKBModel objUpdate = new KBModel.UpdateKBModel()
+            {
+                add = new  KBModel.UpdateKBModel.Add()
+                {
+                    qnaPairs = new List<KBModel.QnAList>(),
+                    urls = new List<string>()
+                },
+                delete = new KBModel.UpdateKBModel.Delete()
+                {
+                    qnaPairs = new List<KBModel.QnAList>()
+                },
+            };
 
+            for (int i = 0; i < objQnA.Count; i++)
+            {
+                if (objQnA[i].source == "delete")
+                {
+                    objUpdate.delete.qnaPairs.Add(new KBModel.QnAList()
+                    {
+                        answer = objQnA[i].answer,
+                        question = objQnA[i].question,
+                    }
+                    );
+                }
+                else if (objQnA[i].source == "add")
+                {
+                    objUpdate.add.qnaPairs.Add(new KBModel.QnAList()
+                    {
+                        answer = objQnA[i].answer,
+                        question = objQnA[i].question,
+                    }
+                    );
+                }
+            }
+
+            HttpStatusCode code = HttpStatusCode.OK;
+            string strMsg = iQnAMaker.UpdateKB(base.KBList[cbxKbId.SelectedIndex].kbId, objUpdate, out code);
+
+            if (code == HttpStatusCode.NoContent)
+            {
+                MessageBox.Show("Update KB Success");
+                string strFilePath = this.DownloadData();
+                this.BindData(strFilePath);
+            }
+            else
+            {
+                MessageBox.Show("Update KB Fail:" + code.ToString());
+            }
         }
 
+        /// <summary>
+        /// 送出訓練的動作
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnTrain_Click(object sender, EventArgs e)
         {
+            HttpStatusCode code = HttpStatusCode.OK;
+            iQnAMaker.TrainKB(base.KBList[cbxKbId.SelectedIndex].kbId, out code);
 
+            if (code == HttpStatusCode.NoContent)
+                MessageBox.Show("Train KB Success");
+            else
+                MessageBox.Show("Train KB Fail:" + code.ToString());
         }
 
         /// <summary>
@@ -111,6 +213,17 @@ namespace maduka_QnAMaker.Forms
         /// <param name="e"></param>
         private void gvQnA_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            txtQuestion.Text = "";
+            txtAnswer.Text = "";
+            blIsEditor = false;
+
+            if (objQnA[e.RowIndex].source == "add")
+            {
+                txtQuestion.Text = objQnA[e.RowIndex].question;
+                txtAnswer.Text = objQnA[e.RowIndex].answer;
+                blIsEditor = true;
+            }
+
             intRowIndex = e.RowIndex;
         }
 
@@ -119,18 +232,26 @@ namespace maduka_QnAMaker.Forms
         /// </summary>
         private string DownloadData()
         {
-            HttpStatusCode code = HttpStatusCode.OK;
             string strFilePath = "";
 
             // 取得tsv的檔案網址
             if (cbxKbId.SelectedIndex > -1)
             {
+                HttpStatusCode code = HttpStatusCode.OK;
                 string strKbId = base.KBList[cbxKbId.SelectedIndex].kbId;
-                string strTsvFileUrl = base.CallQnAMaker("/" + strKbId, "GET", "", out code).Replace("\"", "");
+                string strTsvFileUrl = iQnAMaker.DownloadKB(strKbId, out code);
 
                 // 下載tsv的內容
                 strFilePath = Application.StartupPath + $"\\Download\\{strKbId}.tsv";
-                new WebClient().DownloadFile(strTsvFileUrl, strFilePath);
+
+                // 刪除下載檔案
+                File.Delete(strFilePath);
+
+                using (var client = new WebClient())
+                {
+                    // 儲存新檔案
+                    client.DownloadFile(strTsvFileUrl, strFilePath);
+                }
             }
 
             return strFilePath;
@@ -169,6 +290,24 @@ namespace maduka_QnAMaker.Forms
 
             // 放入Gridview裡
             gvQnA.DataSource = objQnA;
+        }
+
+        /// <summary>
+        /// 資料繫結完成後的動作
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void gvQnA_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            for (int i = 0; i < gvQnA.Rows.Count; i++)
+            {
+                gvQnA.Rows[i].ReadOnly = true;
+                if (!string.IsNullOrEmpty(gvQnA.Rows[i].Cells[0].Value.ToString()))
+                {
+                    if (gvQnA.Rows[i].Cells[2].Value.ToString() == "add")
+                        gvQnA.Rows[i].ReadOnly = false;
+                }
+            }
         }
     }
 }

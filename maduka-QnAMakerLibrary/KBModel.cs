@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace maduka_QnAMaker.Models
+namespace maduka_QnAMakerLibrary
 {
     public class KBModel
     {
@@ -20,7 +19,7 @@ namespace maduka_QnAMaker.Models
         public class CreateKBModel
         {
             public string name { get; set; }
-            public string urls { set; get; }
+            public List<string> urls { set; get; }
             public List<QnAList> qnaPairs { get; set; }
         }
 
@@ -36,6 +35,42 @@ namespace maduka_QnAMaker.Models
                 public string sourceType { get; set; }
                 public string extractionStatusCode { get; set; }
                 public string source { get; set; }
+            }
+        }
+
+        /// <summary>
+        /// 送出修改動作的模型
+        /// </summary>
+        public class UpdateKBModel
+        {
+            public Add add { get; set; }
+            public Delete delete { get; set; }
+
+            public class Add
+            {
+                public List<QnAList> qnaPairs { get; set; }
+                public List<string> urls { get; set; }
+            }
+
+            public class Delete
+            {
+                public List<QnAList> qnaPairs { get; set; }
+            }
+        }
+
+        /// <summary>
+        /// 送出訓練用的物件
+        /// </summary>
+        public class TrainKBModel
+        {
+            public List<Feedbackrecord> feedbackRecords { get; set; }
+
+            public class Feedbackrecord
+            {
+                public string userId { get; set; }
+                public string userQuestion { get; set; }
+                public string kbQuestion { get; set; }
+                public string kbAnswer { get; set; }
             }
         }
 

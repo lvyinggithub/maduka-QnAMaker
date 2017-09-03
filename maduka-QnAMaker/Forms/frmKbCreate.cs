@@ -8,8 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
-using maduka_QnAMaker.Models;
 using System.Net;
+using maduka_QnAMakerLibrary;
 
 namespace maduka_QnAMaker.Forms
 {
@@ -31,8 +31,8 @@ namespace maduka_QnAMaker.Forms
             KBModel.CreateKBModel objKb = new KBModel.CreateKBModel()
             {
                 name = txtKbName.Text,
-                urls = txtQnADocUrl.Text,
-                qnaPairs = new List<Models.KBModel.QnAList>(),
+                urls = new List<string>() { txtQnADocUrl.Text },
+                qnaPairs = new List<KBModel.QnAList>(),
             };
 
             for (int i = 0; i < gvQnA.Rows.Count; i++)
@@ -43,7 +43,7 @@ namespace maduka_QnAMaker.Forms
                     string strAnswer = gvQnA.Rows[i].Cells[1].Value.ToString();
 
                     objKb.qnaPairs.Add(
-                        new Models.KBModel.QnAList()
+                        new KBModel.QnAList()
                         {
                             answer = strAnswer,
                             question = strQuestion,
@@ -53,23 +53,11 @@ namespace maduka_QnAMaker.Forms
             }
 
             // 送出新增的動作
-            this.SendRequestAsync(objKb);
-        }
-
-        /// <summary>
-        /// 呼叫API進行KB建立的動作
-        /// </summary>
-        /// <param name="objKb">要建立KB的物件</param>
-        /// <returns></returns>
-        private void SendRequestAsync(Models.KBModel.CreateKBModel objKb)
-        {
             HttpStatusCode code = HttpStatusCode.OK;
-            string strMsg = CallQnAMaker("/create", "POST", JsonConvert.SerializeObject(objKb), out code);
+            KBModel.CreateKBResultModel result =  base.iQnAMaker.CreateKB(objKb, out code);
 
             if (code == HttpStatusCode.Created)
             {
-                KBModel.CreateKBResultModel result = JsonConvert.DeserializeObject<KBModel.CreateKBResultModel>(strMsg);
-
                 // 寫入KBList的設定檔之
                 base.ReadKBList();
                 base.KBList.Add(
@@ -94,6 +82,8 @@ namespace maduka_QnAMaker.Forms
             txtKbName.Text = "";
             txtQnADocUrl.Text = "";
             gvQnA.DataSource = null;
+            gvQnA.Update();
+            gvQnA.Refresh();
         }
     }
 }

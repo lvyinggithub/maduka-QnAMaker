@@ -88,7 +88,6 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\KBModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\frmKbCreate.resx">
@@ -128,6 +127,13 @@
   <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="Download\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\maduka-QnAMakerLibrary\maduka-QnAMakerLibrary.csproj">
+      <Project>{35d923f1-ac5f-4d9b-9c5e-db0ef7e04e35}</Project>
+      <Name>maduka-QnAMakerLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
