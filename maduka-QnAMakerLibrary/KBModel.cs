@@ -94,6 +94,7 @@ namespace maduka_QnAMakerLibrary
                 public string answer { get; set; }
                 public List<string> questions { get; set; }
                 public float score { get; set; }
+                public string question { get; set; }
             }
         }
 

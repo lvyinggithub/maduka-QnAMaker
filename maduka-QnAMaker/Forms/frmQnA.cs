@@ -49,6 +49,9 @@ namespace maduka_QnAMaker.Forms
 
             if (code == HttpStatusCode.OK)
             {
+                for (int i = 0; i < result.answers.Count; i++)
+                    result.answers[i].question = result.answers[i].questions[0];
+
                 this.BindData(result);
             }
             else
